@@ -1,14 +1,14 @@
-name: "deploy"
+name: "testci"
 
 on:
   workflow_run:
     workflows: [CI]
-    branches: [main]
     types: [completed]
 
 jobs:
-  deploy:
+  test_ci:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Just check after push in main"
+      - run: echo "Работает после успешного CI"
